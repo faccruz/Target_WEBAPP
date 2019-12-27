@@ -1,0 +1,41 @@
+﻿@model  IEnumerable<Target_WEBAPP.Models.TargetAgenda>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <script src="~/Scripts/View/Index.js"></script>
+<h2>Index</h2>
+<input id="buttonAdd" onclick="showEditModal(0)" type="button" value="Novo Agendamento" />
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ID)</th>
+                <th style="text-align:center">@Html.DisplayNameFor(model  => model.Nome) </th>
+                <th style="text-align:center">@Html.DisplayNameFor(model => model.DataInicio)</th>
+                <th style="text-align:center">@Html.DisplayNameFor(model => model.DataFinal)</th>
+                <th style="text-align:center">@Html.DisplayNameFor(model => model.tipoAgendamento)</th>
+                <th style="text-align:center">@Html.DisplayNameFor(model => model.Observacao)</th>
+                <th>Comandos</th>
+            </tr>            
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelitem  => item.ID)</td>
+                    <td>@Html.DisplayFor(modelitem => item.Nome)</td>
+                    <td style="text-align:center">@Html.DisplayFor(modelitem => item.DataInicio)</td>
+                    <td style="text-align:center">@Html.DisplayFor(modelitem => item.DataFinal)</td>
+                    <td style="text-align:center">@Html.DisplayFor(modelitem => item.tipoAgendamento)</td>
+                    <td>@Html.DisplayFor(modelitem => item.Observacao)</td>
+                    <td>
+                        <input id="buttonAdd" onclick="showEditModal(@item.ID)" type="button" value="Editar" />
+                        <input id="btnDelete" onclick="Delete(@item.ID)" type="button" value="Excluir" />
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
